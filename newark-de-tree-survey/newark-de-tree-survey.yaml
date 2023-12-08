@@ -1,0 +1,793 @@
+schemaVersion: 3
+meta:
+  sourceVersionId: 0083f1d1-1e90-450a-b0f0-609a527d24e4 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  description: null
+  projectId: 9cbafd59-d310-4028-afba-55f5ec2efd69 # DO NOT CHANGE - Unique ID of the project from which this file was generated
+  title: Newark DE Tree Survey
+  timezone: null
+  appTheme: SYS_PREF
+  codeLanguage: PYTHON
+  status:
+    name: In Progress
+  categories: []
+  castDecimalsDefault: true
+  logicQueryCacheTimeout: null
+  publishedQueryCacheTimeout: null
+projectAssets:
+  dataConnections: []
+  envVars: []
+  secrets: []
+sharedAssets:
+  secrets: []
+  vcsPackages: []
+  dataConnections: []
+  externalFileIntegrations: []
+cells:
+  - cellType: CODE
+    cellId: 6262aab7-af6b-4f10-aa06-baf0fce8d4c8 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        import pandas as pd
+        import numpy as np
+  - cellType: MARKDOWN
+    cellId: c03a57ce-051e-49c0-b59d-897839ed8faa # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        #### Read a comma-separated values (csv) file into DataFrame.
+
+        The data folder contains a file named "newark_tree_data.csv". Read this file into a dataframe.
+
+        resources:
+        * [Pandas read csv docs](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html#pandas.read_csv)
+  - cellType: CODE
+    cellId: d27a6fb2-a8fd-414d-9a92-f1897da082d5 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # Create DataFrame here
+        df = pd.read_csv('newark_tree_data.csv')
+  - cellType: MARKDOWN
+    cellId: bef26761-1b3f-4020-9377-655bc693b1d1 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |+
+        #### Data frame head as displayed by <df.head>
+
+  - cellType: CODE
+    cellId: 276bc058-fdf1-457a-90f7-735258729e35 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # Display the first few rows of the DataFrame
+        df.head()
+  - cellType: CODE
+    cellId: 6aa5fbda-8a5a-476e-8adb-30add7b6bff1 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # What attributes (columns) does this DataFrame contain?
+        df.columns
+  - cellType: MARKDOWN
+    cellId: 412ad9fd-0462-44e9-bcc1-59fb8142cc28 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        Upon reviewing the columns of the DataFrame, we see that there is already a column named ID that is well suited for an index column.  
+
+        For the purposes of this lab, we are only going to need a few of the available attributes. The attributes we wish to keep are listed below:
+        * ID
+        * UNIQUEID
+        * COMMON
+        * BOTANICAL
+        * COND
+        * RISK
+        * HEIGHT
+
+        Let's provide the index_col and the usecols args when we invoke the read_csv method.
+  - cellType: CODE
+    cellId: e83c9fae-ce38-405a-a81a-0ca2b5d56495 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: New df
+    config:
+      source: |-
+        # Create the new DataFrame here
+        df1 = pd.read_csv('newark_tree_data.csv', index_col = 'ID', usecols=['ID', 'UNIQUEID', 'COMMON', 'BOTANICAL', 'COND', 'RISK', 'HEIGHT'])
+  - cellType: CODE
+    cellId: c25eb736-f224-467d-8cd5-034b0eb54633 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # Display the first few rows of the new DataFrame 
+        df1.head()
+  - cellType: MARKDOWN
+    cellId: e60af9fd-c0e7-44e4-a253-91fe4da2cf5b # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        #### Using Hex's visualization option
+        * Has filters included
+  - cellType: TABLE_DISPLAY
+    cellId: 19cda946-0fd9-472d-b371-c308ab397306 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      dataFrameVariableName: df1
+      resultVariable: table_result_2
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        filters: []
+        columnProperties:
+          - originalName: BOTANICAL
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: COMMON
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: COND
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: HEIGHT
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+          - originalName: RISK
+            renameTo: null
+            size: 82
+            wrapText: null
+            displayFormat: null
+          - originalName: UNIQUEID
+            renameTo: null
+            size: 120
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+  - cellType: CODE
+    cellId: 2b2bdda5-3aa4-4cf5-a8d5-1a5829aad6fd # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # What is the min height?
+        min(df1.HEIGHT)
+  - cellType: CODE
+    cellId: 5fc40d8d-733a-43e3-9799-8589f77e0a35 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # What is the max height?
+        max(df1.HEIGHT)
+  - cellType: CODE
+    cellId: b1e38e7b-deff-4273-8dec-14799fa1257b # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # How do we acquire count, mean, standard deviation, and distribution information from the DataFrame 
+        # by invoking a single method?
+        df1.describe()
+  - cellType: MARKDOWN
+    cellId: d81aca0e-f57b-4f90-a86b-ac0e001348fd # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |
+        #### Plot a histogram using the HEIGHT attribute using pandas
+  - cellType: CODE
+    cellId: d1466d90-e139-4ce7-9744-4db0ca66a0b7 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: import matplotlib.pyplot
+  - cellType: CODE
+    cellId: 8447b6f5-1d2d-44db-895d-f7f11d512ed6 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # Create a histogram using the HEIGHT attribute here
+        df1.plot.hist(bins=15)
+  - cellType: MARKDOWN
+    cellId: fef6fb36-4529-46f9-8778-203530dfeb77 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        #### Vs. Hex's visualization option for histogram 
+        Create for demo
+  - cellType: MARKDOWN
+    cellId: 7d5a1815-7af4-4320-a769-d60bf5ff88ef # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: "#### Plot a bar graph using the COND attribute using Pandas"
+  - cellType: CODE
+    cellId: 7195d496-66f3-413c-be51-4e72fbb470bf # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # How can we determine all of the possible values describing the condition of a tree and their associated counts?
+        cond_df = df.groupby('COND').size()
+        cond_df
+  - cellType: CODE
+    cellId: 13c571b7-70da-4a24-81b5-ad04fa3871db # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # Were these already in the order you would want them to be in order for a graph to make sense? 
+        # If not, reorder  the Series.
+        cond_df = cond_df.reindex(index = ['Excellent', 'Very Good', 'Good', 'Fair', 'Poor', 'Very Poor', 'Critical', 'Dead'])
+        cond_df
+  - cellType: CODE
+    cellId: ab5eeaa9-51f9-42ca-83e3-fcf89776be72 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # Plot the Series here
+        cond_df.plot.bar()
+  - cellType: MARKDOWN
+    cellId: 6d18e0a6-a0e0-410c-8b23-f7c593a6f408 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: "#### Vs. Hex's visualization option"
+  - cellType: CHARTV2
+    cellId: a397f070-bc67-4c60-9655-0b18b9b8e4b6 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      height: null
+      chartSpec:
+        type: layered
+        layers:
+          - id: 130a11d6-03d7-4501-89b7-806e3423f0d3
+            xAxis:
+              sort:
+                - Excellent
+                - Very Good
+                - Good
+                - Fair
+                - Poor
+                - Very Poor
+                - Critical
+                - Dead
+              type: string
+              style:
+                grid:
+                  style: solid
+                ticks: {}
+                labels: {}
+              title: Condition
+              dataFrameColumn: COND
+            series:
+              - id: be518086-42b2-4470-a675-b55cc32bf874
+                type: bar
+                axis:
+                  type: string
+                  style:
+                    grid:
+                      style: solid
+                    ticks: {}
+                    labels: {}
+                  title: Risk Level
+                  aggregate: count
+                dataFrameColumns:
+                  - RISK
+                colorDataFrameColumn: RISK
+                colorOrder:
+                  - High
+                  - Moderate
+                  - Low
+                  - "null"
+                color:
+                  type: series
+                  colorsBySeriesValues:
+                    Low: "#54A24B"
+                    High: "#E45756"
+                    "null": "#72B7B2"
+                    Moderate: "#EECA3B"
+                opacity:
+                  type: static
+                  value: 1
+                tooltip:
+                  type: auto
+                legendTitle: Risk Level
+                barWidth: 1
+                orientation: vertical
+                layout: stacked
+            dataFrame: df1
+        settings:
+          legend:
+            position: right
+          tooltip: true
+          selectionEnabled: false
+      chartSelection: {}
+      colorMappings:
+        Low: "#F58518"
+        High: "#4C78A8"
+        "null": "#72B7B2"
+        Moderate: "#E45756"
+      resultVariable: filter_result_2
+      outputResult: true
+      displayTableConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        filters:
+          - column: COND
+            predicate:
+              op: AND
+              args:
+                - op: NOT_NULL
+                - op: NOT_ONE_OF
+                  arg:
+                    - "null"
+            columnType: STRING
+        columnProperties: []
+        columnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+  - cellType: MARKDOWN
+    cellId: 3fd1d127-01e0-4135-924a-a37f3d4980fd # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: "#### Plot a pie chart using the RISK attribute using pandas"
+  - cellType: CODE
+    cellId: 075b1e1f-36e1-4aec-930b-46bc274b231a # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # How can we determine all of the possible values describing the RISK associated with each tree
+        # along with the corresponding row counts?
+        risk_df = df1.groupby('RISK').size()
+        risk_df
+  - cellType: CODE
+    cellId: 8ce8e03a-186f-40cd-ac2f-746e8877b968 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # Create an array containing the colors green, yellow, and orange
+        # When we create our pie chart, the colors should be associated with the attributes according to the specifications below:
+        # Green -> Low
+        # Yellow -> Moderate
+        # Orange -> High
+        colors = ['red', 'green', 'yellow']
+  - cellType: CODE
+    cellId: 561a4a4d-3484-411e-9f4a-f8372e844ef6 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        # Plot the pie chart here
+        risk_df.plot.pie(y=df.index, colors=colors, autopct='%1.1f%%')
+  - cellType: MARKDOWN
+    cellId: 94c4f333-9811-41ef-982f-01c3ff6b024a # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: "#### Vs. Hex's visualization option"
+  - cellType: CHARTV2
+    cellId: 9c4d2563-e679-4602-ba26-b2430fbfbb4d # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: Precentage of trees by risk condition
+    config:
+      height: null
+      chartSpec:
+        type: layered
+        layers:
+          - id: f87f42a4-fa0d-4f06-8f5c-8d7016cc168e
+            xAxis:
+              sort: y
+              type: string
+              style:
+                grid:
+                  style: solid
+                ticks: {}
+                labels: {}
+              dataFrameColumn: RISK
+            series:
+              - id: 8ec3e980-3fbb-40a8-8751-7f1d4a591097
+                type: pie
+                axis:
+                  type: string
+                  style:
+                    grid:
+                      style: solid
+                    ticks: {}
+                    labels: {}
+                  aggregate: count
+                dataFrameColumns:
+                  - RISK
+                colorDataFrameColumn: RISK
+                colorOrder: ascending
+                color:
+                  type: series
+                  colorsBySeriesValues:
+                    Low: "#54A24B"
+                    High: "#E45756"
+                    "null": "#9D755D"
+                    Moderate: "#EECA3B"
+                opacity:
+                  type: static
+                  value: 1
+                tooltip:
+                  type: auto
+                dataLabels:
+                  angle: 0
+                  color: "#01011b"
+                  position: outside-end
+                legendTitle: Risk
+                radius: 40
+                showAsPct: true
+            dataFrame: df1
+        settings:
+          legend:
+            position: top-right
+          tooltip: true
+          selectionEnabled: false
+      chartSelection: {}
+      colorMappings:
+        Low: "#F58518"
+        Dead: "#F58518"
+        Fair: "#72B7B2"
+        Good: "#54A24B"
+        High: "#4C78A8"
+        Poor: "#EECA3B"
+        "null": "#9D755D"
+        Critical: "#4C78A8"
+        Moderate: "#E45756"
+        Excellent: "#E45756"
+        Very Good: "#B279A2"
+        Very Poor: "#FF9DA6"
+      resultVariable: filter_result_3
+      outputResult: true
+      displayTableConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        filters:
+          - column: RISK
+            predicate:
+              op: AND
+              args:
+                - op: NOT_NULL
+                - op: NOT_ONE_OF
+                  arg:
+                    - "null"
+            columnType: STRING
+        columnProperties:
+          - originalName: BOTANICAL
+            renameTo: null
+            size: 164
+            wrapText: null
+            displayFormat: null
+          - originalName: COMMON
+            renameTo: null
+            size: 139
+            wrapText: null
+            displayFormat: null
+          - originalName: COND
+            renameTo: null
+            size: 88
+            wrapText: null
+            displayFormat: null
+          - originalName: HEIGHT
+            renameTo: null
+            size: 99
+            wrapText: null
+            displayFormat: null
+          - originalName: ID
+            renameTo: null
+            size: 68
+            wrapText: null
+            displayFormat: null
+          - originalName: RISK
+            renameTo: null
+            size: 82
+            wrapText: null
+            displayFormat: null
+          - originalName: UNIQUEID
+            renameTo: null
+            size: 151
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+  - cellType: CODE
+    cellId: cfed5e86-faef-499a-8c45-c34962aaf9de # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: ""
+appLayout:
+  visibleMetadataFields:
+    - DESCRIPTION
+    - AUTHOR
+    - LAST_EDITED
+    - LAST_RUN
+    - CATEGORIES
+    - STATUS
+    - NAME
+    - TABLE_OF_CONTENTS
+  fullWidth: false
+  tabs:
+    - name: Tab 1
+      rows:
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: c03a57ce-051e-49c0-b59d-897839ed8faa
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: bef26761-1b3f-4020-9377-655bc693b1d1
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 276bc058-fdf1-457a-90f7-735258729e35
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 6aa5fbda-8a5a-476e-8adb-30add7b6bff1
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 412ad9fd-0462-44e9-bcc1-59fb8142cc28
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: e60af9fd-c0e7-44e4-a253-91fe4da2cf5b
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: c25eb736-f224-467d-8cd5-034b0eb54633
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 2b2bdda5-3aa4-4cf5-a8d5-1a5829aad6fd
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 5fc40d8d-733a-43e3-9799-8589f77e0a35
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: b1e38e7b-deff-4273-8dec-14799fa1257b
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: d81aca0e-f57b-4f90-a86b-ac0e001348fd
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 8447b6f5-1d2d-44db-895d-f7f11d512ed6
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: fef6fb36-4529-46f9-8778-203530dfeb77
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 7d5a1815-7af4-4320-a769-d60bf5ff88ef
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 7195d496-66f3-413c-be51-4e72fbb470bf
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 13c571b7-70da-4a24-81b5-ad04fa3871db
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: ab5eeaa9-51f9-42ca-83e3-fcf89776be72
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 6d18e0a6-a0e0-410c-8b23-f7c593a6f408
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: a397f070-bc67-4c60-9655-0b18b9b8e4b6
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 3fd1d127-01e0-4135-924a-a37f3d4980fd
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 075b1e1f-36e1-4aec-930b-46bc274b231a
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 561a4a4d-3484-411e-9f4a-f8372e844ef6
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 94c4f333-9811-41ef-982f-01c3ff6b024a
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+        - columns:
+            - start: 0
+              end: 120
+              elements:
+                - showSource: false
+                  hideOutput: false
+                  type: CELL
+                  cellId: 9c4d2563-e679-4602-ba26-b2430fbfbb4d
+                  sharedFilterId: null
+                  height: null
+                  showLabel: true
+sharedFilters: []
