@@ -1,6 +1,6 @@
 schemaVersion: 3
 meta:
-  sourceVersionId: 0083f1d1-1e90-450a-b0f0-609a527d24e4 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  sourceVersionId: c0793e9e-46f7-4230-a1c8-71487c706c4d # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
   description: null
   projectId: 9cbafd59-d310-4028-afba-55f5ec2efd69 # DO NOT CHANGE - Unique ID of the project from which this file was generated
   title: Newark DE Tree Survey
@@ -186,11 +186,6 @@ cells:
       source: |
         #### Plot a histogram using the HEIGHT attribute using pandas
   - cellType: CODE
-    cellId: d1466d90-e139-4ce7-9744-4db0ca66a0b7 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
-    cellLabel: null
-    config:
-      source: import matplotlib.pyplot
-  - cellType: CODE
     cellId: 8447b6f5-1d2d-44db-895d-f7f11d512ed6 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
     cellLabel: null
     config:
@@ -215,7 +210,7 @@ cells:
     config:
       source: |-
         # How can we determine all of the possible values describing the condition of a tree and their associated counts?
-        cond_df = df.groupby('COND').size()
+        cond_df = df1.groupby('COND').size()
         cond_df
   - cellType: CODE
     cellId: 13c571b7-70da-4a24-81b5-ad04fa3871db # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
@@ -369,7 +364,7 @@ cells:
     config:
       source: |-
         # Plot the pie chart here
-        risk_df.plot.pie(y=df.index, colors=colors, autopct='%1.1f%%')
+        risk_df.plot.pie(y=df1.index, colors=colors, autopct='%1.1f%%')
   - cellType: MARKDOWN
     cellId: 94c4f333-9811-41ef-982f-01c3ff6b024a # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
     cellLabel: null
@@ -507,11 +502,6 @@ cells:
         columnOrdering: null
         pinnedColumns: null
         hiddenColumns: null
-  - cellType: CODE
-    cellId: cfed5e86-faef-499a-8c45-c34962aaf9de # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
-    cellLabel: null
-    config:
-      source: ""
 appLayout:
   visibleMetadataFields:
     - DESCRIPTION
